@@ -84,16 +84,17 @@ API_URL=http://mon-serveur:3000 docker compose up --build
 
 ## Déploiement sur une machine du labo
 
-Sur la **même machine** qui fait tourner `msd-analysis-api` (voir son README), lancer :
+Guide complet, pas à pas (prérequis, pare-feu, démarrage automatique, sauvegardes,
+dépannage) : voir **[DEPLOYMENT.md dans msd-analysis-api](https://github.com/Nesto33/msd-analysis-api/blob/claude/nestjs-angular-migration-6xasgs/DEPLOYMENT.md)**
+(lien vers la branche de travail actuelle — à mettre à jour vers `main` une fois le code fusionné)
+— l'API et l'UI se déploient ensemble, sur la même machine.
+
+En résumé, sur la **même machine** qui fait tourner `msd-analysis-api` :
 
 ```bash
 API_URL=http://<ip-locale-de-la-machine>:3000 docker compose up -d --build
 ```
 
-Ensuite, tout le monde au labo accède à l'appli via `http://<ip-locale-de-la-machine>:8080`
-depuis son navigateur. `unless-stopped` redémarre le conteneur automatiquement avec la
-machine.
-
-Cette variable doit pointer vers une adresse joignable **depuis le navigateur du poste
+`API_URL` doit pointer vers une adresse joignable **depuis le navigateur du poste
 client** (ce n'est pas une adresse réseau Docker interne), puisque c'est le navigateur,
 pas le conteneur, qui appelle l'API.
