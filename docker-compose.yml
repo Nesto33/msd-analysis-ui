@@ -1,0 +1,12 @@
+services:
+  ui:
+    build: .
+    container_name: msd_ui
+    restart: unless-stopped
+    environment:
+      # URL à laquelle le navigateur du poste client peut joindre l'API NestJS.
+      # Si l'API tourne dans son propre docker-compose sur la même machine,
+      # http://localhost:3000 (ou l'IP/le nom de domaine du serveur) convient.
+      API_URL: ${API_URL:-http://localhost:3000}
+    ports:
+      - '8080:80'
