@@ -1,0 +1,54 @@
+<header class="hero">
+  <h1 class="app-title">Paramètres</h1>
+  <p class="app-subtitle">Préférences d'affichage et valeurs par défaut pour un nouvel import.</p>
+</header>
+
+<div class="mt-8" style="max-width: 480px;">
+  <section class="card mb-6">
+    <h2 class="card-title">Affichage</h2>
+    <div class="flex justify-between items-center mt-4">
+      <div>
+        <div style="font-weight:700">Mode sombre</div>
+        <div class="muted" style="font-size:.85rem">S'applique immédiatement, mémorisé sur cet appareil.</div>
+      </div>
+      <label class="switch">
+        <input
+          type="checkbox"
+          [(ngModel)]="settingsService.settings.darkMode"
+          (ngModelChange)="settingsService.save()"
+        />
+        <span class="switch-track"></span>
+      </label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="card-title">Valeurs par défaut à l'import</h2>
+    <p class="muted" style="font-size:.85rem; margin-top:-.4rem;">
+      Pré-remplissent le seuil et le LLOQ de chaque assay détecté dans un nouveau fichier —
+      reste modifiable au cas par cas avant de lancer l'analyse.
+    </p>
+
+    <div class="mt-4">
+      <label class="control-label" for="defaultThreshold">Seuil de CV par défaut (%)</label>
+      <input
+        id="defaultThreshold"
+        type="number"
+        class="w-full"
+        [(ngModel)]="settingsService.settings.defaultThreshold"
+        (ngModelChange)="settingsService.save()"
+      />
+    </div>
+
+    <div class="mt-4">
+      <label class="control-label" for="defaultLloq">LLOQ par défaut</label>
+      <input
+        id="defaultLloq"
+        type="number"
+        class="w-full"
+        [(ngModel)]="settingsService.settings.defaultLloq"
+        (ngModelChange)="settingsService.save()"
+      />
+    </div>
+  </section>
+</div>
