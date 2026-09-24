@@ -89,11 +89,15 @@ dépannage) : voir **[DEPLOYMENT.md dans msd-analysis-api](https://github.com/Ne
 (lien vers la branche de travail actuelle — à mettre à jour vers `main` une fois le code fusionné)
 — l'API et l'UI se déploient ensemble, sur la même machine.
 
-En résumé, sur la **même machine** qui fait tourner `msd-analysis-api` :
+En résumé (Linux/Mac), sur la **même machine** qui fait tourner `msd-analysis-api` :
 
 ```bash
 API_URL=http://<ip-locale-de-la-machine>:3000 docker compose up -d --build
 ```
+
+Sous Windows, cette syntaxe ne fonctionne ni en PowerShell ni en cmd : crée plutôt un
+fichier `.env` contenant `API_URL=http://<ip-locale-de-la-machine>:3000` (voir le
+DEPLOYMENT.md ci-dessus, étape 5) avant de lancer `docker compose up -d --build`.
 
 `API_URL` doit pointer vers une adresse joignable **depuis le navigateur du poste
 client** (ce n'est pas une adresse réseau Docker interne), puisque c'est le navigateur,
